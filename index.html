@@ -70,7 +70,7 @@
         placesCount: 128,
         coords: { top: '22%', left: '28%' },
         image: 'https://images.unsplash.com/photo-1512553353614-82a7370096dc?auto=format&fit=crop&w=500&q=80',
-        icon: '⛰️️',
+        icon: '⛰',
         avgBudget: '12,000 - 28,000 ฿'
       },
       {
@@ -1608,7 +1608,7 @@
                         </div>
                         <div className="w-[1px] h-4 bg-slate-700"></div>
                         <div className="flex items-center gap-1.5">
-                          <span>⏱️</span>
+                          <span>⏱️️</span>
                           <span>เวลาเดินทางรวม: <strong className="text-white font-bold">{activeDay.totalTime}</strong></span>
                         </div>
                       </div>
@@ -2216,57 +2216,66 @@
 
                 <div className="space-y-3 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">ชื่อกิจกรรม / สถานที่:</label>
+                    <label className="block font-bold text-slate-700 mb-1">ชื่อกิจกรรม / สถานที่</label>
                     <input
                       type="text"
                       value={editingActivity.title}
-                      onChange={(e) => setEditingActivity({ ...editingActivity, title: e.target.value })}
-                      className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      onChange={(e) => setEditingActivity({...editingActivity, title: e.target.value})}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                   </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">ช่วงเวลา:</label>
-                      <input
-                        type="text"
-                        value={editingActivity.time}
-                        onChange={(e) => setEditingActivity({ ...editingActivity, time: e.target.value })}
-                        className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">ค่าใช้จ่าย (THB):</label>
-                      <input
-                        type="number"
-                        value={editingActivity.cost}
-                        onChange={(e) => setEditingActivity({ ...editingActivity, cost: Number(e.target.value) })}
-                        className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                      />
-                    </div>
-                  </div>
-
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">บันทึกเพิ่มเติม / คำแนะนำ:</label>
+                    <label className="block font-bold text-slate-700 mb-1">ช่วงเวลา</label>
+                    <input
+                      type="text"
+                      value={editingActivity.time}
+                      onChange={(e) => setEditingActivity({...editingActivity, time: e.target.value})}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">หมวดหมู่</label>
+                    <select
+                      value={editingActivity.category}
+                      onChange={(e) => setEditingActivity({...editingActivity, category: e.target.value})}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    >
+                      <option value="Attraction">สถานที่ท่องเที่ยว (Attraction)</option>
+                      <option value="Cafe">คาเฟ่ & ร้านอาหาร (Cafe)</option>
+                      <option value="Stay">ที่พักแนะนำ (Stay)</option>
+                      <option value="Souvenir">ของฝาก & ช้อปปิ้ง (Souvenir)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">ค่าใช้จ่ายประมาณการ (THB)</label>
+                    <input
+                      type="number"
+                      value={editingActivity.cost}
+                      onChange={(e) => setEditingActivity({...editingActivity, cost: Number(e.target.value)})}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">หมายเหตุเพิ่มเติม</label>
                     <input
                       type="text"
                       value={editingActivity.note || ''}
-                      onChange={(e) => setEditingActivity({ ...editingActivity, note: e.target.value })}
-                      className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      onChange={(e) => setEditingActivity({...editingActivity, note: e.target.value})}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 pt-2">
+                <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
                   <button
                     onClick={() => setEditingActivity(null)}
-                    className="flex-1 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-100"
+                    className="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-all"
                   >
                     ยกเลิก
                   </button>
                   <button
                     onClick={handleSaveEditActivity}
-                    className="flex-1 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 shadow-md shadow-blue-500/20"
+                    className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20"
                   >
                     บันทึกการแก้ไข
                   </button>
@@ -2280,71 +2289,67 @@
             <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
               <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4 animate-in fade-in duration-200">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <h3 className="font-bold text-sm text-slate-900">➕ เพิ่มกิจกรรมใหม่ลงใน {activeDay.label}</h3>
+                  <h3 className="font-bold text-sm text-slate-900">➕ เพิ่มกิจกรรมใหม่ ({activeDay.label})</h3>
                   <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-slate-600">✕</button>
                 </div>
 
                 <div className="space-y-3 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">ชื่อกิจกรรม / สถานที่:</label>
+                    <label className="block font-bold text-slate-700 mb-1">ชื่อกิจกรรม / สถานที่</label>
                     <input
                       type="text"
+                      placeholder="เช่น วัดเชียงมั่น / คาเฟ่ริมหาด"
                       value={newActivityTitle}
                       onChange={(e) => setNewActivityTitle(e.target.value)}
-                      placeholder="เช่น ทานอาหารเย็น ร้านริมน้ำ"
-                      className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                   </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">ช่วงเวลา:</label>
-                      <input
-                        type="text"
-                        value={newActivityTime}
-                        onChange={(e) => setNewActivityTime(e.target.value)}
-                        placeholder="14:00 - 15:30"
-                        className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-bold text-slate-700 mb-1">ประเภท:</label>
-                      <select
-                        value={newActivityCategory}
-                        onChange={(e) => setNewActivityCategory(e.target.value)}
-                        className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                      >
-                        <option value="Attraction">สถานที่ท่องเที่ยว</option>
-                        <option value="Cafe">คาเฟ่ & ร้านอาหาร</option>
-                        <option value="Stay">ที่พักแนะนำ</option>
-                        <option value="Souvenir">ของฝาก & ช้อปปิ้ง</option>
-                      </select>
-                    </div>
-                  </div>
-
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">ค่าใช้จ่ายประมาณการ (THB):</label>
+                    <label className="block font-bold text-slate-700 mb-1">ช่วงเวลา</label>
+                    <input
+                      type="text"
+                      placeholder="เช่น 14:00 - 15:30"
+                      value={newActivityTime}
+                      onChange={(e) => setNewActivityTime(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">หมวดหมู่</label>
+                    <select
+                      value={newActivityCategory}
+                      onChange={(e) => setNewActivityCategory(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    >
+                      <option value="Attraction">สถานที่ท่องเที่ยว (Attraction)</option>
+                      <option value="Cafe">คาเฟ่ & ร้านอาหาร (Cafe)</option>
+                      <option value="Stay">ที่พักแนะนำ (Stay)</option>
+                      <option value="Souvenir">ของฝาก & ช้อปปิ้ง (Souvenir)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">ค่าใช้จ่ายประมาณการ (THB)</label>
                     <input
                       type="number"
                       value={newActivityCost}
                       onChange={(e) => setNewActivityCost(Number(e.target.value))}
-                      className="w-full border border-slate-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 pt-2">
+                <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
                   <button
                     onClick={() => setIsAddModalOpen(false)}
-                    className="flex-1 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-100"
+                    className="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-all"
                   >
                     ยกเลิก
                   </button>
                   <button
                     onClick={handleAddActivity}
-                    className="flex-1 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-md shadow-emerald-500/20"
+                    className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-md shadow-emerald-500/20"
                   >
-                    + เพิ่มลงในตาราง
+                    + เพิ่มกิจกรรม
                   </button>
                 </div>
               </div>
@@ -2354,22 +2359,43 @@
           {/* SHARE TRIP MODAL */}
           {isShareModalOpen && (
             <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-              <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center space-y-4 animate-in fade-in duration-200">
-                <div className="text-3xl">🔗</div>
-                <h3 className="font-bold text-base text-slate-900">แชร์ตารางแผนการเดินทางนี้</h3>
-                <p className="text-xs text-slate-500">คัดลอกลิงก์เพื่อส่งต่อให้เพื่อนร่วมทริปของคุณดูได้ทันที</p>
-                <div className="p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-mono truncate select-all">
-                  https://uplan.travel/share/trip-892341
+              <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4 animate-in fade-in duration-200">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <h3 className="font-bold text-sm text-slate-900">🔗 แชร์ตารางแผนการเดินทาง</h3>
+                  <button onClick={() => setIsShareModalOpen(false)} className="text-slate-400 hover:text-slate-600">✕</button>
                 </div>
-                <button
-                  onClick={() => {
-                    setIsShareModalOpen(false);
-                    triggerToast('คัดลอกลิงก์เรียบร้อยแล้ว!');
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors"
-                >
-                  คัดลอกลิงก์ชวนเพื่อน
-                </button>
+
+                <p className="text-xs text-slate-600">
+                  คัดลอกลิงก์ด้านล่างเพื่อแชร์แผนเดินทางนี้ให้เพื่อนหรือผู้ร่วมทริปดูได้ทันที
+                </p>
+
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value="https://uplan.travel/trip/share?id=th-2026-bkk-cnx"
+                    className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-700 font-mono focus:outline-none"
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('https://uplan.travel/trip/share?id=th-2026-bkk-cnx');
+                      triggerToast('คัดลอกลิงก์ลงคลิปบอร์ดแล้ว!');
+                      setIsShareModalOpen(false);
+                    }}
+                    className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shrink-0"
+                  >
+                    คัดลอก
+                  </button>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100 text-center">
+                  <button
+                    onClick={() => setIsShareModalOpen(false)}
+                    className="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors"
+                  >
+                    ปิด
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -2378,7 +2404,7 @@
       );
     }
 
-    // Render React App to DOM
+    // Render React Application
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
